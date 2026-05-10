@@ -1,0 +1,1182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adaptive Learning Platform — Sprint Timeline</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+        background: #f8f9fa;
+        color: #111827;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      a {
+        color: inherit;
+      }
+
+      /* Phase color system */
+      :root {
+        --f: #6b7280;
+        --f-bg: #f3f4f6;
+        --f-tx: #374151;
+        --b: #2563eb;
+        --b-bg: #eff6ff;
+        --b-tx: #1e40af;
+        --a: #7c3aed;
+        --a-bg: #f5f3ff;
+        --a-tx: #5b21b6;
+        --fe: #0891b2;
+        --fe-bg: #ecfeff;
+        --fe-tx: #155e75;
+        --mv: #16a34a;
+        --mv-bg: #f0fdf4;
+        --mv-tx: #14532d;
+        --ca: #d97706;
+        --ca-bg: #fffbeb;
+        --ca-tx: #92400e;
+        --se: #ea580c;
+        --se-bg: #fff7ed;
+        --se-tx: #9a3412;
+        --ai: #dc2626;
+        --ai-bg: #fef2f2;
+        --ai-tx: #991b1b;
+        --af: #9333ea;
+        --af-bg: #fdf4ff;
+        --af-tx: #6b21a8;
+        --mo: #0284c7;
+        --mo-bg: #f0f9ff;
+        --mo-tx: #075985;
+        --sc: #059669;
+        --sc-bg: #ecfdf5;
+        --sc-tx: #064e3b;
+      }
+
+      /* Layout */
+      .page {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 40px 24px 60px;
+      }
+
+      /* Header */
+      .doc-header {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 32px 36px;
+        margin-bottom: 28px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 24px;
+      }
+      .doc-header-left {
+      }
+      .doc-tag {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #6b7280;
+        margin-bottom: 8px;
+      }
+      .doc-title {
+        font-size: 26px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 6px;
+        line-height: 1.2;
+      }
+      .doc-subtitle {
+        font-size: 14px;
+        color: #6b7280;
+      }
+      .doc-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-end;
+        flex-shrink: 0;
+      }
+      .doc-meta-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: #6b7280;
+      }
+      .doc-meta-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #9ca3af;
+      }
+      .doc-meta-val {
+        font-size: 13px;
+        font-weight: 500;
+        color: #374151;
+      }
+
+      /* Stats row */
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+      .stat {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 16px 18px;
+      }
+      .stat-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #9ca3af;
+        margin-bottom: 6px;
+      }
+      .stat-value {
+        font-size: 24px;
+        font-weight: 600;
+        color: #111827;
+        line-height: 1;
+      }
+      .stat-sub {
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 4px;
+      }
+
+      /* Gantt */
+      .section-title {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: #9ca3af;
+        margin-bottom: 12px;
+      }
+      .gantt-wrap {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 8px;
+      }
+      .gantt {
+        display: flex;
+        gap: 3px;
+      }
+      .gc {
+        flex: 1;
+        border-radius: 5px;
+        padding: 8px 3px;
+        text-align: center;
+        cursor: pointer;
+        transition: opacity 0.15s;
+      }
+      .gc:hover {
+        opacity: 0.75;
+      }
+      .gc-n {
+        font-size: 10px;
+        font-weight: 600;
+        font-family: "SFMono-Regular", Consolas, monospace;
+        color: #fff;
+        line-height: 1;
+      }
+      .gc-flag {
+        font-size: 8px;
+        color: rgba(255, 255, 255, 0.85);
+        margin-top: 3px;
+        line-height: 1;
+      }
+      .gantt-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 14px;
+      }
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        color: #6b7280;
+      }
+      .legend-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+        flex-shrink: 0;
+      }
+
+      /* Milestones */
+      .milestones-row {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 28px;
+        flex-wrap: wrap;
+      }
+      .milestone-pill {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 20px;
+        padding: 6px 14px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #374151;
+      }
+      .ms-indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+
+      /* Filters */
+      .filter-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+      }
+      .filter-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #9ca3af;
+      }
+      .fbt {
+        font-size: 12px;
+        padding: 5px 13px;
+        border-radius: 20px;
+        border: 1px solid #e5e7eb;
+        background: #fff;
+        cursor: pointer;
+        color: #6b7280;
+        transition: all 0.15s;
+        font-family: inherit;
+        font-weight: 500;
+      }
+      .fbt:hover {
+        border-color: #9ca3af;
+        color: #374151;
+      }
+      .fbt.on {
+        background: #111827;
+        border-color: #111827;
+        color: #fff;
+      }
+
+      /* Cards */
+      .cards {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        overflow: hidden;
+        border-left: 4px solid;
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 18px;
+        cursor: pointer;
+        user-select: none;
+      }
+      .card-header:hover {
+        background: #f9fafb;
+      }
+
+      .sprint-badge {
+        font-size: 10px;
+        font-weight: 600;
+        font-family: "SFMono-Regular", Consolas, monospace;
+        padding: 3px 8px;
+        border-radius: 5px;
+        flex-shrink: 0;
+        min-width: 34px;
+        text-align: center;
+      }
+      .phase-tag {
+        font-size: 11px;
+        font-weight: 600;
+        padding: 3px 10px;
+        border-radius: 20px;
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+      .card-info {
+        flex: 1;
+        min-width: 0;
+      }
+      .card-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #111827;
+      }
+      .card-sub {
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 1px;
+      }
+      .card-dates {
+        font-size: 11px;
+        font-weight: 500;
+        color: #6b7280;
+        font-family: "SFMono-Regular", Consolas, monospace;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .risk-pill {
+        font-size: 11px;
+        font-weight: 600;
+        padding: 3px 9px;
+        border-radius: 20px;
+        flex-shrink: 0;
+      }
+      .chev {
+        font-size: 12px;
+        color: #9ca3af;
+        flex-shrink: 0;
+        transition: transform 0.2s;
+        display: inline-block;
+      }
+      .chev.open {
+        transform: rotate(180deg);
+      }
+
+      .card-body {
+        border-top: 1px solid #f3f4f6;
+        padding: 18px 20px;
+        display: none;
+      }
+      .card-body.open {
+        display: block;
+      }
+
+      /* Milestone banner */
+      .ms-banner {
+        border-radius: 8px;
+        padding: 10px 14px;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .ms-banner svg {
+        flex-shrink: 0;
+      }
+
+      /* Body sections */
+      .sec-label {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #9ca3af;
+        margin-bottom: 8px;
+        margin-top: 16px;
+      }
+      .sec-label:first-child {
+        margin-top: 0;
+      }
+
+      .task-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .task-item {
+        display: flex;
+        gap: 8px;
+        font-size: 13px;
+        color: #374151;
+        line-height: 1.55;
+      }
+      .task-bullet {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #d1d5db;
+        flex-shrink: 0;
+        margin-top: 7px;
+      }
+
+      .info-box {
+        border-radius: 8px;
+        padding: 12px 15px;
+        margin-top: 6px;
+      }
+      .info-box p {
+        font-size: 13px;
+        line-height: 1.65;
+        color: inherit;
+      }
+
+      /* Expand all row */
+      .toolbar {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 10px;
+      }
+
+      /* Footer */
+      .doc-footer {
+        margin-top: 48px;
+        padding-top: 20px;
+        border-top: 1px solid #e5e7eb;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        color: #9ca3af;
+      }
+      .footer-badge {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      /* Risk colors */
+      .risk-low {
+        background: #f0fdf4;
+        color: #15803d;
+      }
+      .risk-medium {
+        background: #fffbeb;
+        color: #b45309;
+      }
+      .risk-high {
+        background: #fef2f2;
+        color: #b91c1c;
+      }
+
+      @media (max-width: 640px) {
+        .stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .doc-header {
+          flex-direction: column;
+        }
+        .doc-meta {
+          align-items: flex-start;
+        }
+        .gantt-legend {
+          display: none;
+        }
+      }
+
+      @media print {
+        body {
+          background: #fff;
+        }
+        .page {
+          padding: 20px;
+        }
+        .fbt,
+        .toolbar,
+        .card-header .chev {
+          display: none;
+        }
+        .card-body {
+          display: block !important;
+        }
+        .card {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+        .doc-header {
+          border: 1px solid #ddd;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="doc-header">
+        <div class="doc-header-left">
+          <div class="doc-tag">Project Deliverable</div>
+          <div class="doc-title">Adaptive Learning Platform</div>
+          <div class="doc-subtitle">
+            Full-stack development plan &mdash; 15 sprints &middot; 30 weeks
+          </div>
+        </div>
+        <div class="doc-meta">
+          <div>
+            <div class="doc-meta-label">Prepared</div>
+            <div class="doc-meta-val">May 2026</div>
+          </div>
+          <div>
+            <div class="doc-meta-label">Start date</div>
+            <div class="doc-meta-val">May 15, 2026</div>
+          </div>
+          <div>
+            <div class="doc-meta-label">Delivery</div>
+            <div class="doc-meta-val">December 10, 2026</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-label">Total sprints</div>
+          <div class="stat-value">15</div>
+          <div class="stat-sub">S0 through S14</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Duration</div>
+          <div class="stat-value">30 wks</div>
+          <div class="stat-sub">May 15 &ndash; Dec 10</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Milestones</div>
+          <div class="stat-value">2</div>
+          <div class="stat-sub">MVP &amp; Full product</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Phases</div>
+          <div class="stat-value">11</div>
+          <div class="stat-sub">Foundation &rarr; Scale</div>
+        </div>
+      </div>
+
+      <div class="section-title">Project timeline</div>
+      <div class="gantt-wrap">
+        <div class="gantt" id="gantt"></div>
+        <div class="gantt-legend" id="legend"></div>
+      </div>
+
+      <div class="milestones-row">
+        <div class="milestone-pill">
+          <div class="ms-indicator" style="background: var(--mv)"></div>
+          S7 &mdash; MVP live &middot; Sep 3, 2026
+        </div>
+        <div class="milestone-pill">
+          <div class="ms-indicator" style="background: var(--sc)"></div>
+          S14 &mdash; Full product &middot; Dec 10, 2026
+        </div>
+      </div>
+
+      <div class="filter-row">
+        <span class="filter-label">Filter</span>
+        <div id="filters"></div>
+      </div>
+
+      <div class="toolbar">
+        <button class="fbt" id="toggleAll">Expand all</button>
+      </div>
+      <div class="cards" id="cards"></div>
+
+      <div class="doc-footer">
+        <span>Adaptive Learning Platform &mdash; Sprint Plan v1.0</span>
+        <span class="footer-badge">Confidential</span>
+      </div>
+    </div>
+    <script>
+      const PH = {
+        foundation: {
+          label: "Foundation",
+          color: "var(--f)",
+          bg: "var(--f-bg)",
+          tx: "var(--f-tx)",
+        },
+        backend: {
+          label: "Backend",
+          color: "var(--b)",
+          bg: "var(--b-bg)",
+          tx: "var(--b-tx)",
+        },
+        algorithm: {
+          label: "Algorithm",
+          color: "var(--a)",
+          bg: "var(--a-bg)",
+          tx: "var(--a-tx)",
+        },
+        frontend: {
+          label: "Frontend",
+          color: "var(--fe)",
+          bg: "var(--fe-bg)",
+          tx: "var(--fe-tx)",
+        },
+        mvp: {
+          label: "MVP Deploy",
+          color: "var(--mv)",
+          bg: "var(--mv-bg)",
+          tx: "var(--mv-tx)",
+        },
+        calibration: {
+          label: "Calibration",
+          color: "var(--ca)",
+          bg: "var(--ca-bg)",
+          tx: "var(--ca-tx)",
+        },
+        security: {
+          label: "Security",
+          color: "var(--se)",
+          bg: "var(--se-bg)",
+          tx: "var(--se-tx)",
+        },
+        adv_irt: {
+          label: "Adv. IRT",
+          color: "var(--ai)",
+          bg: "var(--ai-bg)",
+          tx: "var(--ai-tx)",
+        },
+        adv_fsrs: {
+          label: "Adv. FSRS",
+          color: "var(--af)",
+          bg: "var(--af-bg)",
+          tx: "var(--af-tx)",
+        },
+        mobile: {
+          label: "Mobile",
+          color: "var(--mo)",
+          bg: "var(--mo-bg)",
+          tx: "var(--mo-tx)",
+        },
+        scale: {
+          label: "Scale",
+          color: "var(--sc)",
+          bg: "var(--sc-bg)",
+          tx: "var(--sc-tx)",
+        },
+      };
+
+      const RISK = {
+        low: { label: "Low risk", cls: "risk-low" },
+        medium: { label: "Med risk", cls: "risk-medium" },
+        high: { label: "High risk", cls: "risk-high" },
+      };
+
+      const S = [
+        {
+          id: 0,
+          phase: "foundation",
+          title: "Infrastructure Setup",
+          sub: "Project skeleton, CI/CD pipeline, containerisation",
+          dates: "May 15 – May 28",
+          milestone: null,
+          risk: "low",
+          tasks: [
+            "Configure Docker Compose: Postgres 16 + Redis 7 + backend + frontend containers with health checks",
+            "Initialize backend service with uv: FastAPI application, async engine, module hierarchy (api/, services/, models/, schemas/, core/, tasks/)",
+            "Implement GET /api/v1/health and GET /api/v1/ready with Postgres and Redis connectivity checks",
+            "Configure GitHub Actions CI pipeline: ruff lint, mypy strict, pytest with Postgres/Redis service containers",
+            "Set up pre-commit hooks, root Makefile (up, down, test, lint, seed), .env.example with all variables",
+            "Initialize Next.js 15 App Router: TypeScript strict mode, Tailwind CSS, shadcn/ui component library, pnpm",
+            "Author root documentation: README, CLAUDE.md working agreement, CHANGELOG, .gitignore",
+          ],
+          ships:
+            "Fully containerized repository. CI passes on a no-op push. /health returns 200. Swagger UI accessible at /docs. Next.js home page renders.",
+          demo: "Green CI badge on GitHub. curl /health → 200. Open /docs → full Swagger UI. Open localhost:3000 → Next.js home.",
+          note: "Infrastructure-first sprint — Docker networking, service health checks, and CI matrix configuration are the primary integration points.",
+          riskLevel: "low",
+        },
+
+        {
+          id: 1,
+          phase: "backend",
+          title: "Data Model + Auth",
+          sub: "All 7 database tables + JWT authentication",
+          dates: "May 29 – Jun 11",
+          milestone: null,
+          risk: "medium",
+          tasks: [
+            "Alembic setup + migration 001: all 7 tables with indexes per ARCHITECTURE.md DDL (users, topics, items, responses, user_thetas, card_states, review_logs)",
+            "SQLAlchemy 2.0 ORM models with async session: User, Topic, Item, Response, UserTheta, CardState, ReviewLog",
+            "Pydantic v2 schemas with ConfigDict(from_attributes=True): UserCreate, UserRead, UserLogin, TokenResponse",
+            "core/security.py: bcrypt hashing (cost 12), JWT HS256 encode/decode, 1-hour access token expiry",
+            "Auth endpoints: POST /auth/register, POST /auth/login, POST /auth/logout, GET /auth/me",
+            "get_current_user dependency with Redis JWT blocklist on logout (jti claim + TTL)",
+            "api/deps.py: get_db_session, get_redis, require_role factory for RBAC",
+          ],
+          ships:
+            "Register → login → /me → logout cycle fully operational. Token is invalidated after logout — subsequent /me calls return 401.",
+          demo: "Postman/curl: register → login (capture token) → GET /me → POST /auth/logout → GET /me → 401.",
+          note: "SQLAlchemy 2.0 async session patterns differ from 1.x style. All queries use select() + await session.execute() exclusively — no session.query().",
+          riskLevel: "medium",
+        },
+
+        {
+          id: 2,
+          phase: "backend",
+          title: "Admin API + Seed",
+          sub: "Content management endpoints + 100-item question bank",
+          dates: "Jun 12 – Jun 25",
+          milestone: null,
+          risk: "low",
+          tasks: [
+            "services/topics.py: create and update with materialized path computation (path field maintained by application)",
+            "Admin endpoints POST/GET/PUT/DELETE /admin/topics — instructor and admin roles only",
+            "Admin endpoints POST/GET/PUT/DELETE /admin/items — paginated (limit/offset), filterable by topic_id",
+            "Rate limiting on auth endpoints: 10 requests per 15 minutes per IP via slowapi + Redis",
+            "Integration test suite: test_auth.py, test_admin_items.py, test_admin_topics.py using testcontainers Postgres",
+            "scripts/seed.py: admin + instructor + student users, 5 root topics with subtopics, 100 items with default IRT parameters",
+          ],
+          ships:
+            "Full admin content management operational. Student role receives 403 on all /admin/* routes. Seed populates a fresh database in under 10 seconds.",
+          demo: "Seed DB → log in as admin → create topic → create item → paginated list. Log in as student → hit /admin/items → 403.",
+          note: "Straightforward CRUD sprint. Primary focus is role enforcement and test coverage depth.",
+          riskLevel: "low",
+        },
+
+        {
+          id: 3,
+          phase: "algorithm",
+          title: "IRT Core",
+          sub: "EAP theta estimation + Fisher information item selection",
+          dates: "Jun 26 – Jul 9",
+          milestone: null,
+          risk: "high",
+          tasks: [
+            "Implement estimate_theta_eap(): EAP theta estimation with log-space arithmetic, 41 quadrature points, prior N(0,1), returns (θ, θ_se)",
+            "Unit tests for theta estimator: empty history (prior), all-correct (10 items), all-incorrect, mixed responses, 200-response numerical stability",
+            "Implement select_next(): max Fisher information with difficulty pre-filter |b−θ|≤0.5, topic frequency cap 30%, exposure cap, warmup pool for cold-start",
+            "Unit tests for selection: argmax correctness, NoItemsAvailableError, topic cap enforcement, cold-start pool behaviour",
+            "Implement fetch_candidates() Postgres query: unseen items for user, |b−θ|≤0.5 filter, ordered by discrimination DESC, LIMIT 50",
+            "Implement Redis candidate pool: key = candidates:user:{id}:theta:{bucket}, 0.25-wide theta buckets, TTL 300s",
+          ],
+          ships:
+            "Given a response history, correct theta is returned. Given theta, the highest-information unseen item is selected. All unit tests green. No HTTP endpoints yet.",
+          demo: "pytest tests/unit/test_theta.py -v: all-correct θ ≈ +2, all-incorrect θ ≈ −2, mixed θ near 0. pytest tests/unit/test_selection.py -v: all constraints verified.",
+          note: "Most mathematically intensive sprint in the project. EAP numerical precision is critical — validate every edge case exhaustively before advancing to Sprint 4.",
+          riskLevel: "high",
+        },
+
+        {
+          id: 4,
+          phase: "algorithm",
+          title: "FSRS + Orchestrator + Practice API",
+          sub: "Full adaptive loop end-to-end",
+          dates: "Jul 10 – Jul 23",
+          milestone: null,
+          risk: "medium",
+          tasks: [
+            "services/fsrs/scheduler.py: FsrsScheduler wrapping py-fsrs — record_review(), state_for(), derive_rating() from (is_correct, response_time_ms)",
+            "Unit tests for scheduler + one integration test against real py-fsrs Scheduler end-to-end",
+            "services/fsrs/queue.py: Redis sorted set due queue — ZPOPMIN atomic pop, count_due(), add(user_id, item_id, due_at)",
+            "Integration tests for queue against real Redis via testcontainers Redis fixture",
+            "services/orchestrator.py: get_next_item() — FSRS priority threshold decision, fall-through to IRT path",
+            "GET /api/v1/practice/next-item: calls orchestrator, strips correct_option_id from response payload",
+            "POST /api/v1/practice/responses: inserts response row, enqueues update_theta + update_fsrs background tasks, invalidates IRT candidate cache",
+            "tasks/update_theta.py + tasks/update_fsrs.py as FastAPI BackgroundTasks",
+            "Performance test: p95 /next-item < 100ms with 100 items and 50 users pre-seeded with 150 responses each",
+          ],
+          ships:
+            "Full adaptive loop operational via API. 20-question session updates theta and schedules FSRS reviews. p95 latency under 100ms.",
+          demo: "20-question curl loop. Observe user_thetas.theta shifting after each response. Query Redis due queue to verify scheduled review timestamps.",
+          note: "Background task fan-out and synchronous cache invalidation ordering require careful sequencing to prevent stale candidate sets on consecutive requests.",
+          riskLevel: "medium",
+        },
+
+        {
+          id: 5,
+          phase: "frontend",
+          title: "Frontend Auth + Practice",
+          sub: "Login flow + adaptive practice session UI",
+          dates: "Jul 24 – Aug 6",
+          milestone: null,
+          risk: "medium",
+          tasks: [
+            "Next.js route handler at /api/auth/[...action]/route.ts: proxies backend auth, sets httpOnly Secure SameSite=Lax cookie",
+            "lib/auth.ts (server-only): getCurrentUser() and getAuthCookie() via next/headers cookies()",
+            "lib/api.ts + lib/fetcher.ts: typed API client with base URL switching (INTERNAL_API_URL for server, NEXT_PUBLIC_API_URL for client)",
+            "TanStack Query QueryProvider, useNextItem and useSubmitResponse hooks with cache invalidation on submission",
+            "practiceSessionStore.ts (Zustand): currentItem, startedAt, streak, sessionItems",
+            "Practice components: QuestionCard, OptionList, FeedbackPanel, SessionHeader (displays θ and streak)",
+            "/practice/page.tsx: fetch → render → capture response_time_ms → submit → feedback → advance loop",
+          ],
+          ships:
+            "Complete adaptive practice session operable in browser. JWT never visible in client JavaScript or localStorage.",
+          demo: "Register → land on /practice → answer 10 questions → adaptive items, per-answer feedback, live streak in header.",
+          note: "httpOnly cookie proxy via Next.js route handlers is a specific pattern — must follow frontend/README.md auth section exactly to avoid CORS and SameSite issues.",
+          riskLevel: "medium",
+        },
+
+        {
+          id: 6,
+          phase: "frontend",
+          title: "Dashboard + Admin UI",
+          sub: "Learner analytics, charts, content management",
+          dates: "Aug 7 – Aug 20",
+          milestone: null,
+          risk: "low",
+          tasks: [
+            "Backend: GET /dashboard/stats, /theta-history, /retention, /topic-mastery endpoints",
+            "Recharts chart components: ThetaHistoryChart (line + SE band), RetentionChart (area), TopicMasteryChart (horizontal bar)",
+            "/dashboard/page.tsx: current theta, history chart, retention rate, topic mastery bars",
+            "/admin/items/: list with pagination and topic filter, create form, edit form",
+            "/admin/topics/page.tsx: hierarchical tree view with inline create and edit",
+            "Loading skeletons, error boundaries, role-based navigation Header",
+            "Responsive layout (360px minimum viewport), accessibility pass: keyboard nav, ARIA labels, WCAG AA contrast",
+            "Playwright e2e: login → complete 5-question session → verify dashboard theta update",
+          ],
+          ships:
+            "Full web application operational: practice + dashboard + admin. MVP feature-complete. All e2e tests pass.",
+          demo: "End-to-end browser walkthrough: session → dashboard reflects updated theta → admin creates item → item served to fresh student account.",
+          note: "Primary edge cases are chart data shaping from backend response format and loading state sequencing across parallel dashboard queries.",
+          riskLevel: "low",
+        },
+
+        {
+          id: 7,
+          phase: "mvp",
+          title: "Polish + Production Deploy",
+          sub: "MVP goes live",
+          dates: "Aug 21 – Sep 3",
+          milestone: "MVP LIVE",
+          risk: "medium",
+          tasks: [
+            "Enhanced seed: 200 medical questions across 10 topics, difficulty values distributed across [−2, +2]",
+            "Demo student account with 150 pre-generated responses targeting θ ≈ +0.5",
+            "OpenAPI cleanup: descriptions, examples, and response schemas on every endpoint",
+            "Production Dockerfiles: multi-stage builds, non-root user, no development dependencies",
+            "Production configuration: HTTPS-only cookies, OpenAPI UI behind feature flag, all secrets from environment",
+            "Deploy backend + Postgres + Redis to Railway or Fly.io with managed database backups",
+            "Deploy frontend to Vercel or same provider",
+            "Full smoke test of deployed environment end-to-end",
+            "3-minute walkthrough video: login → session → dashboard → admin adds item → item served to student",
+            "Update README with live URL, demo credentials, architecture diagram (PNG)",
+          ],
+          ships:
+            "Live URL accessible to anyone. A new user with demo credentials can complete a full session and see a populated dashboard.",
+          demo: "Share the URL. Open it. Login as demo student. Complete a session. Theta and charts update in real time.",
+          note: "First production deployment typically surfaces one or two infrastructure surprises — allocate at least half the sprint for environment-specific debugging.",
+          riskLevel: "medium",
+        },
+
+        {
+          id: 8,
+          phase: "calibration",
+          title: "Calibration Engine",
+          sub: "IRT parameters self-update from response data",
+          dates: "Sep 4 – Sep 17",
+          milestone: null,
+          risk: "low",
+          tasks: [
+            "services/irt/calibration.py: calibrate_items() wrapping girth.twopl_mml — builds response matrix from Postgres with np.nan for missing entries",
+            "tasks/calibrate.py: selects items with ≥ IRT_CALIBRATION_MIN_RESPONSES, runs calibration, writes back discrimination_a and difficulty_b",
+            "POST /admin/calibrate: trigger calibration run, optional item_id for single-item recalibration",
+            "GET /admin/analytics/items: per-item stats — response count, correct rate, current (a, b), calibration status, last calibrated timestamp",
+            "Migration: item_calibration_history table (item_id, a, b, calibrated_at)",
+            "Admin UI: calibration status badge on items list, parameter history sparkline on item detail page",
+            "Redis cache flush: invalidate all candidates:* keys after calibration run completes",
+            "Tests: unit test calibrate_items() on synthetic dataset with known true parameters",
+          ],
+          ships:
+            "Items with ≥30 responses have data-driven (a, b) values replacing defaults. Parameter drift visible in admin UI history sparkline.",
+          demo: "Simulate 50 responses on 10 items. Trigger calibration. Compare (a, b) values before and after in admin analytics.",
+          note: "Response matrix construction must handle sparse data correctly — items answered by a small subset of users have many np.nan entries.",
+          riskLevel: "low",
+        },
+
+        {
+          id: 9,
+          phase: "security",
+          title: "Security Hardening",
+          sub: "Refresh tokens, 2FA, KVKK/GDPR compliance",
+          dates: "Sep 18 – Oct 1",
+          milestone: null,
+          risk: "medium",
+          tasks: [
+            "Refresh tokens with rotation: refresh_tokens table, POST /auth/refresh, automatic rotation on use, family invalidation on theft detection",
+            "TOTP 2FA via pyotp: POST /auth/2fa/setup (returns QR code URI), POST /auth/2fa/verify, POST /auth/2fa/disable",
+            "KVKK/GDPR compliance: DELETE /users/me/data endpoint — anonymises PII (email → hash, name → null), hard-deletes response data on request",
+            "Per-user data encryption: pgcrypto for sensitive fields at rest, migration with key management pattern",
+            "Audit log table: append-only record of all auth events, data deletions, and admin actions",
+            "Security headers middleware: HSTS, CSP, X-Frame-Options, X-Content-Type-Options",
+            "OWASP Top 10 self-assessment — resolve any critical findings before close of sprint",
+          ],
+          ships:
+            "Production-grade authentication with 2FA. GDPR data erasure workflow documented and tested. Audit log populated for all sensitive events.",
+          demo: "Full 2FA login flow. Call DELETE /users/me/data → verify PII anonymisation in DB → audit log records the event.",
+          note: "Per-column encryption migration requires a tested rollback path. Validate on a restored copy of the database before applying to production.",
+          riskLevel: "medium",
+        },
+
+        {
+          id: 10,
+          phase: "adv_irt",
+          title: "Advanced IRT",
+          sub: "3PL model + per-topic theta estimation",
+          dates: "Oct 2 – Oct 15",
+          milestone: null,
+          risk: "high",
+          tasks: [
+            "3PL model extension: add guessing parameter c to EAP formula P = c + (1−c) · sigmoid(a(θ−b)), update Fisher information accordingly",
+            "Calibration updated to girth.threepl_mml for items with > 100 responses",
+            "Migration: topic_thetas table (user_id, topic_id, theta, theta_se, num_responses, updated_at)",
+            "Per-topic EAP estimator: estimate_theta_eap_by_topic() — partitions response history by topic, returns dict[topic_id, (θ, θ_se)]",
+            "tasks/update_theta.py extended to update topic_thetas in the same background task",
+            "GET /dashboard/topic-thetas: per-topic theta with SE for spider/radar chart",
+            "Frontend: TopicThetaRadarChart on dashboard, topic-level detail panel on click",
+            "Item misfit detection: χ² fit statistic per item, flag items with p < 0.01 in admin analytics",
+          ],
+          ships:
+            "Items carry guessing parameter. Dashboard displays per-topic theta radar chart. Misfitting items flagged in admin analytics.",
+          demo: "Student strong in Cardiology but weak in Pharmacology — two distinct thetas visible on the radar chart. Admin sees a misfitting item flagged.",
+          note: "3PL EAP derivation is more complex than 2PL — the guessing parameter interacts non-linearly with low-theta responses. Requires thorough boundary case testing.",
+          riskLevel: "high",
+        },
+
+        {
+          id: 11,
+          phase: "adv_fsrs",
+          title: "Advanced FSRS + Instructor Analytics",
+          sub: "Per-user scheduling weights, cohort analytics, forecasting",
+          dates: "Oct 16 – Oct 29",
+          milestone: null,
+          risk: "medium",
+          tasks: [
+            "Per-user FSRS weight optimisation via py-fsrs Optimizer (requires ≥ 100 reviews per user)",
+            "user_fsrs_weights table + migration, background optimisation job running weekly per eligible user",
+            "Retention workload forecasting: GET /dashboard/forecast — reviews due in next 7 and 30 days, predicted retention curve",
+            "Instructor cohort analytics: GET /admin/analytics/cohort — theta distribution across all learners, list of underperforming students",
+            "DIF (differential item functioning) analysis: chi-square by high vs low ability groups",
+            "GET /admin/analytics/items enhanced: response time distribution, misfit severity score, DIF flag",
+            "Frontend: cohort theta histogram, retention forecast chart, instructor item analytics table",
+          ],
+          ships:
+            "Learners with ≥100 reviews receive personalised FSRS scheduling weights. Instructors have cohort-level analytics and per-item misfit visibility.",
+          demo: "Two students with contrasting response patterns — show their different FSRS weight vectors. Cohort theta histogram on instructor dashboard.",
+          note: "DIF analysis implemented as a simplified chi-square proxy — document the methodological scope clearly in the admin UI.",
+          riskLevel: "medium",
+        },
+
+        {
+          id: 12,
+          phase: "mobile",
+          title: "React Native — Foundation",
+          sub: "Auth + full practice session on iOS and Android",
+          dates: "Oct 30 – Nov 12",
+          milestone: null,
+          risk: "low",
+          tasks: [
+            "RN project setup: React Native 0.76+ with New Architecture, Expo Router for navigation, TypeScript strict",
+            "Auth: expo-secure-store for token storage (native equivalent of httpOnly cookie), Bearer header injection on all API requests",
+            "Extract shared API types from frontend/src/types/ into a shared package consumed by both web and mobile",
+            "Practice session screens: QuestionScreen, FeedbackScreen, SessionSummaryScreen",
+            "TanStack Query setup on mobile — same hook interface as web",
+            "Zustand session store with shared logic package where possible",
+            "Navigation flow: login → practice → session complete → home tab",
+          ],
+          ships:
+            "Complete adaptive practice session operable on iOS and Android against the production backend.",
+          demo: "Side-by-side: web and mobile completing a simultaneous session against the same backend.",
+          note: "SecureStore + manual Bearer header injection is standard React Native practice. Straightforward sprint.",
+          riskLevel: "low",
+        },
+
+        {
+          id: 13,
+          phase: "mobile",
+          title: "React Native — Complete",
+          sub: "Dashboard, push notifications, offline practice mode",
+          dates: "Nov 13 – Nov 26",
+          milestone: null,
+          risk: "medium",
+          tasks: [
+            "Dashboard screens: theta display, topic mastery (Victory Native charts), recent activity feed",
+            "Push notifications: FCM (Android) + APNs (iOS) configuration, backend triggers notification when FSRS reviews become due",
+            "Offline-first practice: queue responses in AsyncStorage, replay queue on reconnect via background sync",
+            "Network status detection: offline indicator banner, submit button disabled when offline queue is full",
+            "App icon, splash screen, onboarding flow for new users",
+            "TestFlight (iOS) + Play Store internal track (Android) build and upload",
+            "Maestro or Detox e2e tests for critical mobile paths: login, practice session, offline sync",
+          ],
+          ships:
+            "Feature-complete mobile application. Push notifications fire on FSRS schedule. Offline practice queues and syncs correctly on reconnection.",
+          demo: "Kill network → answer 3 questions → reconnect → responses sync. Push notification arrives for a scheduled review.",
+          note: "FCM/APNs certificate and key configuration typically takes half a day. Allocate time for provisioning profile setup on first iOS build.",
+          riskLevel: "medium",
+        },
+
+        {
+          id: 14,
+          phase: "scale",
+          title: "Scaling + Infrastructure",
+          sub: "Worker tier, read replicas, load testing, observability",
+          dates: "Nov 27 – Dec 10",
+          milestone: "FULL PRODUCT",
+          risk: "medium",
+          tasks: [
+            "Worker tier: Arq queue + dedicated worker container in Docker Compose and production deployment",
+            "Background tasks migrated to Arq: update_theta and update_fsrs become Arq jobs instead of FastAPI BackgroundTasks",
+            "Postgres read replica: SQLAlchemy async read/write routing (writes to primary, reads to replica)",
+            "Table partitioning: responses and review_logs partitioned by created_at (monthly) — zero-downtime migration strategy",
+            "k6 load test: 500 concurrent users, capture p50/p95/p99 on /next-item and /responses",
+            "Prometheus metrics endpoint, Grafana dashboard for latency, error rate, and queue depth SLOs",
+            "Runbook documentation: incident response procedure, backup/restore steps, deploy rollback process",
+          ],
+          ships:
+            "Architecture proven to handle 10,000+ concurrent users. Load test passes. Worker tier decoupled from API. Full observability stack in place.",
+          demo: "k6 load test report: p95 /next-item < 150ms under 500 concurrent users. Live Grafana dashboard showing real-time SLO metrics.",
+          note: "Arq worker migration is clean — service interfaces remain unchanged. Table partitioning migration must be rehearsed on a restored copy of production data first.",
+          riskLevel: "medium",
+        },
+      ];
+
+      let allEx = false;
+      let curFilter = "all";
+
+      function bgColor(ph) {
+        return PH[ph].color;
+      }
+
+      function renderGantt() {
+        document.getElementById("gantt").innerHTML = S.map((s) => {
+          const flag = s.milestone
+            ? `<div class="gc-flag">&#9873; ${s.milestone}</div>`
+            : "";
+          return `<div class="gc" title="S${s.id} · ${s.title} · ${s.dates}" style="background:${bgColor(s.phase)}" onclick="jumpToCard(${s.id})"><div class="gc-n">S${s.id}</div>${flag}</div>`;
+        }).join("");
+
+        const seen = new Set();
+        document.getElementById("legend").innerHTML = S.map((s) => {
+          if (seen.has(s.phase)) return "";
+          seen.add(s.phase);
+          return `<div class="legend-item"><div class="legend-dot" style="background:${bgColor(s.phase)}"></div>${PH[s.phase].label}</div>`;
+        }).join("");
+      }
+
+      function renderFilters() {
+        const f = document.getElementById("filters");
+        const phases = ["all", ...Object.keys(PH)];
+        f.innerHTML = phases
+          .map((p) => {
+            const lbl = p === "all" ? "All" : PH[p] ? PH[p].label : p;
+            return `<button class="fbt${p === "all" ? " on" : ""}" data-p="${p}">${lbl}</button>`;
+          })
+          .join("");
+        f.addEventListener("click", (e) => {
+          const b = e.target.closest(".fbt");
+          if (!b) return;
+          curFilter = b.dataset.p;
+          document
+            .querySelectorAll(".fbt")
+            .forEach((x) => x.classList.remove("on"));
+          b.classList.add("on");
+          renderCards();
+        });
+      }
+
+      function renderCards() {
+        const list =
+          curFilter === "all" ? S : S.filter((s) => s.phase === curFilter);
+        const c = document.getElementById("cards");
+        c.innerHTML = list.map((s) => card(s)).join("");
+        c.querySelectorAll(".card-header").forEach((h) => {
+          h.addEventListener("click", () => {
+            const body = h.nextElementSibling;
+            const chev = h.querySelector(".chev");
+            body.classList.toggle("open");
+            chev.classList.toggle("open");
+            h.setAttribute("aria-expanded", body.classList.contains("open"));
+          });
+        });
+        if (allEx) {
+          document
+            .querySelectorAll(".card-body")
+            .forEach((b) => b.classList.add("open"));
+          document
+            .querySelectorAll(".chev")
+            .forEach((c) => c.classList.add("open"));
+        }
+      }
+
+      function card(s) {
+        const ph = PH[s.phase];
+        const rk = RISK[s.risk];
+        const msBanner = s.milestone
+          ? `<div class="ms-banner" style="background:${ph.bg};color:${ph.tx}">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+    Milestone: ${s.milestone}</div>`
+          : "";
+        const tasks = s.tasks
+          .map(
+            (t) =>
+              `<li class="task-item"><span class="task-bullet"></span><span>${t}</span></li>`,
+          )
+          .join("");
+        return `<div class="card" id="card-${s.id}" style="border-left-color:${ph.color}">
+    <div class="card-header" role="button" aria-expanded="false">
+      <span class="sprint-badge" style="background:${ph.bg};color:${ph.tx}">S${s.id}</span>
+      <span class="phase-tag" style="background:${ph.bg};color:${ph.tx}">${ph.label}</span>
+      <div class="card-info"><div class="card-title">${s.title}</div><div class="card-sub">${s.sub}</div></div>
+      <span class="card-dates">${s.dates}</span>
+      <span class="risk-pill ${rk.cls}">${rk.label}</span>
+      <span class="chev">&#9660;</span>
+    </div>
+    <div class="card-body">
+      ${msBanner}
+      <div class="sec-label">Deliverables</div>
+      <ul class="task-list">${tasks}</ul>
+      <div class="sec-label">What ships at end of sprint</div>
+      <div class="info-box" style="background:#F0FDF4;color:#166534"><p>${s.ships}</p></div>
+      <div class="sec-label">Demo scenario</div>
+      <div class="info-box" style="background:#EFF6FF;color:#1E40AF"><p>${s.demo}</p></div>
+      <div class="sec-label">Risk note</div>
+      <div class="info-box ${rk.cls}"><p>${s.note}</p></div>
+    </div>
+  </div>`;
+      }
+
+      function jumpToCard(id) {
+        const el = document.getElementById("card-" + id);
+        if (!el) return;
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+        const body = el.querySelector(".card-body"),
+          chev = el.querySelector(".chev");
+        body.classList.add("open");
+        chev.classList.add("open");
+        el.querySelector(".card-header").setAttribute("aria-expanded", "true");
+      }
+
+      document
+        .getElementById("toggleAll")
+        .addEventListener("click", function () {
+          allEx = !allEx;
+          document
+            .querySelectorAll(".card-body")
+            .forEach((b) => b.classList.toggle("open", allEx));
+          document
+            .querySelectorAll(".chev")
+            .forEach((c) => c.classList.toggle("open", allEx));
+          this.textContent = allEx ? "Collapse all" : "Expand all";
+        });
+
+      renderGantt();
+      renderFilters();
+      renderCards();
+    </script>
+  </body>
+</html>
